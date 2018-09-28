@@ -1,0 +1,26 @@
+version: "2"
+
+services:
+  web:
+    image: nginx
+    ports:
+     - "80:80"
+     - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/nginx
+      - ./www-data:/var/www
+    command: [nginx-debug, '-g', 'daemon off;']
+    networks:
+     - redirect-check-cloud_default
+     - website-versioning_default
+     - jenkins_default
+
+
+networks:
+  redirect-check-cloud_default:
+    external: true
+  website-versioning_default:
+    external: true
+  jenkins_default:
+    external: true

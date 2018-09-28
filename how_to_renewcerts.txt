@@ -1,0 +1,7 @@
+https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx
+
+
+sudo certbot --nginx certonly
+
+
+rename pem to key and crt
